@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="maxmontero.com.webservices.MainActivity">
+
+    <ProgressBar
+
+        android:id="@+id/progressbar_main"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal" />
+    <!-- El scroolview ayuda a dar scrool a la pantalla-->
+    <Button
+        android:id="@+id/button_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cargar Datos"/>
+
+    <TextView
+        android:id="@+id/textview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" "
+
+        android:scrollbars="vertical"
+         />
+
+
+</LinearLayout>
