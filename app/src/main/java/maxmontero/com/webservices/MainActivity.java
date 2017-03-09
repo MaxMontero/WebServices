@@ -19,7 +19,7 @@ import java.util.List;
 import maxmontero.com.webservices.POJO.Usuario;
 import maxmontero.com.webservices.Parsers.UsuarioXMLParser;
 
-//en esta rama trabajaremos con JASON
+//en esta rama trabajaremos con JASON nombre de branch Jason
 public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     TextView textview;
