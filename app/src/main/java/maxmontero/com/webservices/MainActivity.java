@@ -52,14 +52,17 @@ public class MainActivity extends AppCompatActivity {
                 if (isOnline()){
                     //trabajar con XML
                     //pedirDatos("http://maloschistes.com/maloschistes.com/jose/usuarios.xml");
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+                    //trabajar con Json simple
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
+                    //trabajar con json con seguridad
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/s/webservice.php");
                 }else{
                     Toast.makeText(getApplicationContext(),"Sin conexion",Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    public void cargarDatos(String datos){
+    public void cargarDatos(){
 
         if (usuarioList != null){
             for (Usuario usuario: usuarioList){
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            cargarDatos("Inicio de carga");
+            cargarDatos();
 
             if(taskList.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -128,28 +131,36 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             */
-
-            String content = HttpManager.getData(params[0]);
+            //agregamos los nuevos datos
+            String content = HttpManager.getDataS(params[0],"pepito","pepito");
             return content;
         }
 
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
-            cargarDatos(values[0]);
+            //cargarDatos(values[0]);
         }
 
         //despues de la ejecucion
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            //trabajar con json
+
+
+
+            if (result == null){
+                Toast.makeText(MainActivity.this,"No se pudo conectar",Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.INVISIBLE);
+                return;
+            }
             usuarioList = UsuarioJSONParser.parse(result);
 
-            cargarDatos(result);
+            cargarDatos();
             taskList.remove(this);
-            if (taskList.size()==0){
                 progressBar.setVisibility(View.INVISIBLE);
-            }
+
 
 
         }
