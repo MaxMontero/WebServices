@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import maxmontero.com.webservices.POJO.Usuario;
+import maxmontero.com.webservices.Parsers.UsuarioJSONParser;
 import maxmontero.com.webservices.Parsers.UsuarioXMLParser;
 
 //en esta rama trabajaremos con JASON nombre de branch Jason
@@ -49,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //pregunta si esta en linea
                 if (isOnline()){
-                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/usuarios.xml");
+                    //trabajar con XML
+                    //pedirDatos("http://maloschistes.com/maloschistes.com/jose/usuarios.xml");
+                    pedirDatos("http://maloschistes.com/maloschistes.com/jose/webservice.php");
                 }else{
                     Toast.makeText(getApplicationContext(),"Sin conexion",Toast.LENGTH_SHORT).show();
                 }
@@ -140,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            usuarioList = UsuarioXMLParser.parser(result);
+            usuarioList = UsuarioJSONParser.parse(result);
 
             cargarDatos(result);
             taskList.remove(this);

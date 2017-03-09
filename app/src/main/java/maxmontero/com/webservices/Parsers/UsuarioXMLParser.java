@@ -59,7 +59,7 @@ public class UsuarioXMLParser {
                     case XmlPullParser.TEXT:
                         if(intDataItemTAG && usuario!=null){
                             switch (currentTAGName){
-                                case "usuarioId":
+                                case "usuarioid":
                                     usuario.setUsuarioId(Integer.parseInt(parser.getText()));
                                     break;
                                 case "nombre":
